@@ -1,22 +1,32 @@
 // Fetch function for each alcohol
 export const fetchDrinksByAlcohol = async (alcoholTypes) => {
   const types = Array.isArray(alcoholTypes) ? alcoholTypes : [alcoholTypes];
-  const allDrinks = [];
+  // const allDrinks = [];
 
-  for (const type of types) {
+  //for (const type of types) {
+  //const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${type}`;
+  //map all alcohols and fetch each one first
+  const drinkPromises = types.map(async (type) => {
     const apiUrl = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${type}`;
+
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      if (data.drinks) {
-        allDrinks.push(...data.drinks);
-      }
+      return data.drinks || [];
+      //if (data.drinks) {
+      // allDrinks.push(...data.drinks);
     } catch (error) {
       console.error(`Error fetching ${type} drinks:`, error);
+      return [];
     }
-  }
+    // return allDrinks;
+  });
+  //promise tells js to wait until all fetches finish
+  const results = await Promise.all(drinkPromises);
+  const allDrinks = results.flat(); // flatten the array of arrays into one array
   return allDrinks;
 };
+
 //to retrieve ingredients
 export async function fetchDrinkDetailsById(id) {
   const response = await fetch(

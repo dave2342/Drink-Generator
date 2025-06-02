@@ -126,6 +126,7 @@ function SelectedDrink({ selectedDrink }) {
           className="drink-img"
         />
       </div>
+      <div></div>
     </div>
   );
 }
