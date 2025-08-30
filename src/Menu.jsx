@@ -1,3 +1,6 @@
+import { useState, useRef, useEffect } from "react";
+import { FaBars } from "react-icons/fa";
+
 export function Menu({
   setCurrentView,
   setSelectedDrink,
@@ -5,73 +8,132 @@ export function Menu({
   setMenuButton,
   menuButton,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  const handleSelect = (value) => {
+    setSelectedDrink(null);
+    setAlcohol("");
+    setCurrentView(value);
+    setMenuButton(value);
+    setIsOpen(false); // close menu after selecting
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <>
-      <div className="navbar">
-        <div className="navbar-wrapper">
-          <div className="menu">
-            <h2
-              onClick={function resetDrink() {
-                setSelectedDrink(null);
-                setAlcohol("");
-                setCurrentView("");
-                setMenuButton("");
-              }}
-            >
-              Alco<span style={{ color: "gray" }}>Logic</span>
-            </h2>
-            <button
-              className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
-                menuButton === "creative"
-                  ? "underline font-semibold"
-                  : "hover:underline"
-              } text-white px-3 py-1 transition-colors duration-300`}
-              onClick={function resetDrink() {
-                setSelectedDrink(null);
-                setAlcohol("");
-                setCurrentView("creative");
-                setMenuButton("creative");
-              }}
-            >
-              RanGen
-            </button>
-            <button
-              className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
-                menuButton === "alcohols"
-                  ? "underline font-semibold"
-                  : "hover:underline"
-              } text-white px-3 py-1 transition-colors duration-300`}
-              onClick={function chosenFeature() {
-                setCurrentView("random");
-                setMenuButton("alcohols");
-              }}
-            >
-              By Alcohol
+    <div className="navbar">
+      <div className="navbar-wrapper flex justify-between items-center">
+        {/* Left side: logo and main buttons */}
+        <div className="menu flex items-center gap-4">
+          <h2
+            onClick={() => {
+              setSelectedDrink(null);
+              setAlcohol("");
+              setCurrentView("");
+              setMenuButton("");
+            }}
+            className="cursor-pointer"
+          >
+            Alco<span style={{ color: "gray" }}>Logic</span>
+          </h2>
+
+          {/* <button
+            className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
+              menuButton === "creative"
+                ? "underline font-semibold"
+                : "hover:underline"
+            }`}
+            onClick={() => {
+              setSelectedDrink(null);
+              setAlcohol("");
+              setCurrentView("creative");
+              setMenuButton("creative");
+            }}
+          >
+            RanGen
+          </button>
+          <button
+            className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
+              menuButton === "alcohols"
+                ? "underline font-semibold"
+                : "hover:underline"
+            }`}
+            onClick={() => {
+              setCurrentView("alcohols");
+              setMenuButton("alcohols");
+            }}
+          >
+            By Alcohol
+          </button>
+          <button
+            className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
+              menuButton === "byo"
+                ? "underline font-semibold"
+                : "hover:underline"
+            }`}
+            onClick={() => {
+              setSelectedDrink(null);
+              setAlcohol("");
+              setCurrentView("byo");
+              setMenuButton("byo");
+            }}
+          >
+            BYO
+          </button> */}
+        </div>
+
+        {/* Right side: icons + hamburger menu */}
+        <div
+          className="menu-right flex items-center gap-2 relative"
+          ref={menuRef}
+        >
+          <button>👤</button>
+          <button>🆕</button>
+
+          {/* Hamburger menu button */}
+          {/* Wrap the button and dropdown in a relative div */}
+          <div className="relative">
+            <button onClick={() => setIsOpen(!isOpen)}>
+              <FaBars size={24} color="white" />
             </button>
 
-            {/* <button className="menu-Button" onClick={() => setCurrentView("byo")}> */}
-            <button
-              className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
-                menuButton === "byo"
-                  ? "underline font-semibold"
-                  : "hover:underline"
-              } text-white px-3 py-1 transition-colors duration-300`}
-              onClick={function resetDrink() {
-                setSelectedDrink(null);
-                setAlcohol("");
-                setCurrentView("byo");
-                setMenuButton("byo");
-              }}
-            >
-              BYO
-            </button>
-          </div>
-          <div className="menu-right">
-            <button>👤</button>
-            <button>🆕</button>
+            {isOpen && (
+              <div className="absolute right-0 top-full mt-1 bg-blue-500 rounded shadow-lg z-50 min-w-[120px] flex flex-col overflow-hidden">
+                <button
+                  className="block px-4 py-2 w-full text-left text-white hover:bg-blue-600"
+                  onClick={() => handleSelect("creative")}
+                >
+                  Creative
+                </button>
+                <button
+                  className="block px-4 py-2 w-full text-left text-white hover:bg-blue-600"
+                  onClick={() => handleSelect("alcohols")}
+                >
+                  By Alcohol
+                </button>
+                <button
+                  className="block px-4 py-2 w-full text-left text-white hover:bg-blue-600"
+                  onClick={() => handleSelect("byo")}
+                >
+                  BYO
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -7,8 +7,11 @@ import {
   fetchWhiskeyDrinks,
   fetchDrinkDetailsById,
 } from "./api/alcoholDrinks";
+import { useState } from "react";
 
 export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
+  const [buttonText, setButtonText] = useState("Make Drink");
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -44,6 +47,7 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
       const randomDrink = drinks[Math.floor(Math.random() * drinks.length)];
       const detailedDrink = await fetchDrinkDetailsById(randomDrink.idDrink);
       setSelectedDrink(detailedDrink);
+      setButtonText("Make Another");
     }
   }
 
@@ -61,7 +65,9 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
             id="alcohol"
             onChange={(e) => setAlcohol(e.target.value)}
           >
-            <option value="">Select</option>
+            <option value="" hidden>
+              Select
+            </option>
             <option value="all">Random</option>
             <option value="gin">Gin</option>
             <option value="rum">Rum</option>
@@ -69,7 +75,7 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
             <option value="vodka">Vodka</option>
             <option value="whiskey">Whiskey</option>
           </select>
-          <button className="make-drink-button">Make drink</button>
+          <button className="make-drink-button">{buttonText}</button>
         </form>
       </div>
     </>

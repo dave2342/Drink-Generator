@@ -8,7 +8,7 @@ export function FeatureView({
   setAlcohol,
   setSelectedDrink,
 }) {
-  if (currentView === "random") {
+  if (currentView === "alcohols") {
     return (
       <>
         {/* <div className="maybe"> */}

@@ -45,15 +45,13 @@ export default function App() {
             setMenuButton={setMenuButton}
             menuButton={menuButton}
           />
-          <div className="maybe">
-            <FeatureView
-              currentView={currentView}
-              alcohol={alcohol}
-              setAlcohol={setAlcohol}
-              setSelectedDrink={setSelectedDrink}
-            />
-            <SelectedDrink selectedDrink={selectedDrink} />
-          </div>
+          <FeatureView
+            currentView={currentView}
+            alcohol={alcohol}
+            setAlcohol={setAlcohol}
+            setSelectedDrink={setSelectedDrink}
+          />
+          <SelectedDrink selectedDrink={selectedDrink} />
         </div>
         <Footer />
       </div>

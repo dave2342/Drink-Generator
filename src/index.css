@@ -32,32 +32,18 @@ body,
 
 /* Wraps everything including footer */
 .app-container {
-  min-height: 100vh;
+  min-height: 100vh; /* full viewport height */
   display: flex;
   flex-direction: column;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
 }
 
 /* Main content area */
 .app {
-  flex: 1;
-  padding: 1.5rem 0;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-}
-
-.maybe {
-  flex: 1;
-  padding: 1.5rem 0;
-  display: grid;
-  grid-template-rows: auto auto 1fr auto;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  background-color: #dae0e1;
-  min-height: 80vh;
+  flex: 1; /* take remaining space */
+  padding: 1rem 0;
+  display: flex; /* <— simpler than grid for your case */
+  flex-direction: column; /* stack children vertically */
+  gap: 1.5rem; /* spacing between sections */
 }
 
 /* Footer is not fixed anymore */
@@ -67,10 +53,9 @@ body,
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-top: 1px solid #ccc; */
+  border-top: 1px solid #ccc;
   padding: 0 1rem;
   text-align: center;
-  box-sizing: border-box;
 }
 
 /* --- Component Styles --- */
@@ -81,12 +66,14 @@ h2 {
   color: var(--accent);
   font-family: "Monoton";
   font-size: 34px;
-  padding: 0.5rem 0;
+  line-height: 1; /* reduce line box size */
+  padding: 0; /* remove vertical padding */
   text-transform: uppercase;
-  font-weight: 400;
-  margin: 0 0 0.1rem;
+  font-weight: 300;
+  margin: 0;
   display: inline-block;
 }
+
 h2:hover {
   cursor: pointer;
 }
@@ -183,7 +170,7 @@ select {
   justify-content: space-between;
   align-items: center;
   background-color: #04384b;
-  padding: 0.5rem 1rem;
+  padding: 1.2rem 1rem;
   color: white;
 }
 .menu {
@@ -214,6 +201,7 @@ img {
 .content-wrapper {
   width: 75%;
   max-width: 700px;
+  height: auto;
   margin: 1rem auto;
   border-radius: 44px;
   background-color: #e4e4e4;
@@ -225,4 +213,23 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.menu-dropdown-enter {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.menu-dropdown-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms ease-out;
+}
+.menu-dropdown-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.menu-dropdown-exit-active {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 200ms ease-out;
 }
