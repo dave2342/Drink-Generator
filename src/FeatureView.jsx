@@ -1,6 +1,8 @@
+import { DefaultContext } from "react-icons";
 import { BuildYourOwn } from "./FeatureBuildYourOwn";
 import { CreativeCocktails } from "./FeatureCreativeCocktails";
 import { RandomGenerator } from "./FeatureRandomGenerator";
+import { DefaultPage } from "./FeatureDefault";
 
 export function FeatureView({
   currentView,
@@ -11,19 +13,29 @@ export function FeatureView({
   if (currentView === "alcohols") {
     return (
       <>
-        {/* <div className="maybe"> */}
-        <RandomGenerator
-          alcohol={alcohol}
-          setAlcohol={setAlcohol}
-          setSelectedDrink={setSelectedDrink}
-        />
-        {/* </div> */}
+        <div className="test">
+          <div className="test-wrapper">
+            <RandomGenerator
+              alcohol={alcohol}
+              setAlcohol={setAlcohol}
+              setSelectedDrink={setSelectedDrink}
+            />
+          </div>
+        </div>
       </>
     );
   } else if (currentView === "byo") {
     return <BuildYourOwn />;
   } else if (currentView === "creative") {
     return <CreativeCocktails />;
+  } else if (currentView === "default") {
+    return (
+      <div className="test">
+        <div className="test-wrapper">
+          <DefaultPage />
+        </div>
+      </div>
+    );
   }
   return null;
 }

@@ -54,11 +54,6 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
   return (
     <>
       <div className="alcohol-select">
-        {/* <input
-          type="text"
-          className="ingredient-search"
-          placeholder="Enter Ingredient"
-        /> */}
         <form className="add-form" onSubmit={handleSubmit}>
           <select
             className="rounded-none"

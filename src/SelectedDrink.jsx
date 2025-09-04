@@ -24,11 +24,6 @@ export function SelectedDrink({ selectedDrink }) {
               ))}
             </ul>
           </div>
-          {/* <img
-            src={selectedDrink.strDrinkThumb}
-            alt={selectedDrink.strDrink}
-            className="drink-img"
-          /> */}
         </div>
         <div className="drink-favorite">❤️</div>
       </div>

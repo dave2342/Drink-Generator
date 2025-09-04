@@ -30,23 +30,32 @@ body,
   font-family: system-ui, sans-serif;
 }
 
-/* Wraps everything including footer */
 .app-container {
-  min-height: 100vh; /* full viewport height */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Main content area */
-.app {
-  flex: 1; /* take remaining space */
-  padding: 1rem 0;
-  display: flex; /* <— simpler than grid for your case */
-  flex-direction: column; /* stack children vertically */
-  gap: 1.5rem; /* spacing between sections */
+.test {
+  background-color: #198089;
+  padding: 1.2rem 6rem;
+}
+.test-wrapper {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Footer is not fixed anymore */
+.app {
+  flex: 1;
+  /* padding: 1rem 0; */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .footer {
   height: 2.5rem;
   background-color: #f8f8f5;
@@ -58,16 +67,14 @@ body,
   text-align: center;
 }
 
-/* --- Component Styles --- */
-
 h2 {
   text-align: left;
   background-color: #04384b;
   color: var(--accent);
   font-family: "Monoton";
   font-size: 34px;
-  line-height: 1; /* reduce line box size */
-  padding: 0; /* remove vertical padding */
+  line-height: 1;
+  padding: 0;
   text-transform: uppercase;
   font-weight: 300;
   margin: 0;
@@ -170,7 +177,7 @@ select {
   justify-content: space-between;
   align-items: center;
   background-color: #04384b;
-  padding: 1.2rem 1rem;
+  padding: 1.2rem 6rem;
   color: white;
 }
 .menu {
@@ -203,7 +210,8 @@ img {
   max-width: 700px;
   height: auto;
   margin: 1rem auto;
-  border-radius: 44px;
+  border-radius: 6px;
+  padding: 4px;
   background-color: #e4e4e4;
 }
 

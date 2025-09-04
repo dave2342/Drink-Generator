@@ -35,63 +35,19 @@ export function Menu({
   return (
     <div className="navbar">
       <div className="navbar-wrapper flex justify-between items-center">
-        {/* Left side: logo and main buttons */}
+        {/* Left side: logo */}
         <div className="menu flex items-center gap-4">
           <h2
             onClick={() => {
               setSelectedDrink(null);
               setAlcohol("");
-              setCurrentView("");
+              setCurrentView("default");
               setMenuButton("");
             }}
             className="cursor-pointer"
           >
             Alco<span style={{ color: "gray" }}>Logic</span>
           </h2>
-
-          {/* <button
-            className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
-              menuButton === "creative"
-                ? "underline font-semibold"
-                : "hover:underline"
-            }`}
-            onClick={() => {
-              setSelectedDrink(null);
-              setAlcohol("");
-              setCurrentView("creative");
-              setMenuButton("creative");
-            }}
-          >
-            RanGen
-          </button>
-          <button
-            className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
-              menuButton === "alcohols"
-                ? "underline font-semibold"
-                : "hover:underline"
-            }`}
-            onClick={() => {
-              setCurrentView("alcohols");
-              setMenuButton("alcohols");
-            }}
-          >
-            By Alcohol
-          </button>
-          <button
-            className={`whitespace-nowrap px-3 py-1 text-white text-base transition duration-300 ${
-              menuButton === "byo"
-                ? "underline font-semibold"
-                : "hover:underline"
-            }`}
-            onClick={() => {
-              setSelectedDrink(null);
-              setAlcohol("");
-              setCurrentView("byo");
-              setMenuButton("byo");
-            }}
-          >
-            BYO
-          </button> */}
         </div>
 
         {/* Right side: icons + hamburger menu */}

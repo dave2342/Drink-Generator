@@ -28,46 +28,11 @@ export function BuildYourOwn() {
             {openIngredients === key && Component && <Component />}
           </div>
         ))}
-        {/* <button
-          className="block mb-2 w-full rounded-none border-2 border-solid border-red-500 bg-blue-500 text-white px-3 py-1 hover:bg-blue-600 hover:border-blue-600 transition-colors duration-300"
-          onClick={() =>
-            setOpenIngredients(
-              openIngredients === "alcohols" ? null : "alcohols"
-            )
-          }
-        >
-          Alcohols
-        </button>
-        {openIngredients === "alcohols" && <AlcoholsList />}
-
-        <button
-          className="block mb-2 w-full rounded-none border border-white border-opacity-90 bg-blue-500 text-white px-3 py-1 hover:bg-blue-600 hover:border-blue-600 transition-colors duration-300 box-border"
-          onClick={() =>
-            setOpenIngredients(openIngredients === "mixers" ? null : "mixers")
-          }
-        >
-          Mixers
-        </button>
-        {openIngredients === "mixers" && <MixersList />}
-        <button
-          className="block mb-2 w-full rounded-none border border-green-200 border-opacity-90 bg-blue-500 text-white px-3 py-1 hover:bg-blue-600 hover:border-blue-600 transition-colors duration-300 box-border"
-          onClick={() =>
-            setOpenIngredients(openIngredients === "garnish" ? null : "garnish")
-          }
-        >
-          Garnish
-        </button>
-        {openIngredients === "garnish" && <GarnishList />}
-        <button className="block mb-2 w-full rounded-none border border-green-200 border-opacity-90 bg-blue-500 text-white px-3 py-1 hover:bg-blue-600 hover:border-blue-600 transition-colors duration-300 box-border">
-          Etc
-        </button> */}
       </div>
       <div className="flex flex-grow overflow-x-auto bg-transparent">
-        {/* {openIngredients === "alcohols" && <AlcoholsList />} */}
         <p> hello</p>
       </div>
       <div className="flex flex-grow overflow-x-auto bg-transparent">
-        {/* {openIngredients === "alcohols" && <AlcoholsList />} */}
         <p> drink appears here</p>
       </div>
     </div>

@@ -21,22 +21,14 @@ export function ingredientList(drink) {
 export default function App() {
   const [alcohol, setAlcohol] = useState("");
   const [selectedDrink, setSelectedDrink] = useState(null);
-  const [currentView, setCurrentView] = useState("");
+  const [currentView, setCurrentView] = useState("default");
   const [menuButton, setMenuButton] = useState("");
-
   const [byoIngredients, setByoIngredients] = useState([]);
 
   return (
     <>
       <div className="app-container">
         <div className="app">
-          {/* <Logo
-          setAlcohol={setAlcohol}
-          setCurrentView={setCurrentView}
-          setSelectedDrink={setSelectedDrink}
-          setMenuButton={setMenuButton}
-        /> */}
-          {/* //pass props to Form */}
           <Menu
             currentView={currentView}
             setCurrentView={setCurrentView}
