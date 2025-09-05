@@ -6,26 +6,28 @@ export function SelectedDrink({ selectedDrink }) {
   const ingredients = ingredientList(selectedDrink);
 
   return (
-    <div className="content-wrapper">
-      <div className="result">
-        <div className="drink-info">
-          <div className="drink-image-container">
-            <img
-              src={selectedDrink.strDrinkThumb}
-              alt={selectedDrink.strDrink}
-              className="drink-img"
-            />
+    <div className="test">
+      <div className="content-wrapper">
+        <div className="result">
+          <div className="drink-info">
+            <div className="drink-image-container">
+              <img
+                src={selectedDrink.strDrinkThumb}
+                alt={selectedDrink.strDrink}
+                className="drink-img"
+              />
+            </div>
+            <div className="drink-text">
+              <h3 className="drink-title">{selectedDrink.strDrink}</h3>
+              <ul className="ingredients-list">
+                {ingredients.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="drink-text">
-            <h3 className="drink-title">{selectedDrink.strDrink}</h3>
-            <ul className="ingredients-list">
-              {ingredients.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
+          <div className="drink-favorite">❤️</div>
         </div>
-        <div className="drink-favorite">❤️</div>
       </div>
     </div>
   );

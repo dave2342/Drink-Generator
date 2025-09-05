@@ -37,10 +37,12 @@ body,
 }
 
 .test {
-  background-color: #198089;
-  padding: 1.2rem 6rem;
+  padding: 0rem 6rem;
 }
 .test-wrapper {
+  background-color: #c9d1d1;
+  border-radius: 10px;
+  padding: 6px;
   width: 75%;
   margin: 0 auto;
   display: flex;
@@ -67,7 +69,7 @@ body,
   text-align: center;
 }
 
-h2 {
+.menu-h2 {
   text-align: left;
   background-color: #04384b;
   color: var(--accent);
@@ -81,7 +83,7 @@ h2 {
   display: inline-block;
 }
 
-h2:hover {
+.menu-h2:hover {
   cursor: pointer;
 }
 
@@ -166,7 +168,7 @@ select {
   transition: all 0.25s ease-in-out;
 }
 .make-drink-button {
-  border-radius: 32px;
+  border-radius: 0px;
   padding: 2px 8px;
   border: 1px solid #04384b;
   background-color: #ff9800;
@@ -199,17 +201,21 @@ img {
 }
 .alcohol-select {
   display: flex;
+  padding: 1px;
+  /* background-color: #1e1e2f; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 4px;
+  margin: 0.5rem auto;
+  width: 75%;
+  max-width: 700px;
 }
 
 .content-wrapper {
   width: 75%;
   max-width: 700px;
   height: auto;
-  margin: 1rem auto;
+  margin: 0.5rem auto;
   border-radius: 6px;
   padding: 4px;
   background-color: #e4e4e4;

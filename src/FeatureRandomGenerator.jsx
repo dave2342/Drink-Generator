@@ -53,25 +53,36 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
 
   return (
     <>
-      <div className="alcohol-select">
-        <form className="add-form" onSubmit={handleSubmit}>
-          <select
-            className="rounded-none"
-            id="alcohol"
-            onChange={(e) => setAlcohol(e.target.value)}
-          >
-            <option value="" hidden>
-              Select
-            </option>
-            <option value="all">Random</option>
-            <option value="gin">Gin</option>
-            <option value="rum">Rum</option>
-            <option value="tequila">Tequila</option>
-            <option value="vodka">Vodka</option>
-            <option value="whiskey">Whiskey</option>
-          </select>
-          <button className="make-drink-button">{buttonText}</button>
-        </form>
+      <div className="test">
+        <div className="content-wrapper">
+          <h1 className="text-2xl font-bold mb-2">Pick your base alcohol!</h1>
+          <p className="text-lg text-gray-700 mb-2">
+            We'll mix up a random, but real, concoction you may have never heard
+            of!
+          </p>
+        </div>
+      </div>
+      <div className="test">
+        <div className="alcohol-select">
+          <form className="add-form" onSubmit={handleSubmit}>
+            <select
+              className="rounded-none"
+              id="alcohol"
+              onChange={(e) => setAlcohol(e.target.value)}
+            >
+              <option value="" hidden>
+                Select
+              </option>
+              <option value="all">Random</option>
+              <option value="gin">Gin</option>
+              <option value="rum">Rum</option>
+              <option value="tequila">Tequila</option>
+              <option value="vodka">Vodka</option>
+              <option value="whiskey">Whiskey</option>
+            </select>
+            <button className="make-drink-button">{buttonText}</button>
+          </form>
+        </div>
       </div>
     </>
   );

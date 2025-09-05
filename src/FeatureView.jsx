@@ -13,15 +13,15 @@ export function FeatureView({
   if (currentView === "alcohols") {
     return (
       <>
-        <div className="test">
-          <div className="test-wrapper">
-            <RandomGenerator
-              alcohol={alcohol}
-              setAlcohol={setAlcohol}
-              setSelectedDrink={setSelectedDrink}
-            />
-          </div>
-        </div>
+        {/* <div className="test">
+          <div className="test-wrapper"> */}
+        <RandomGenerator
+          alcohol={alcohol}
+          setAlcohol={setAlcohol}
+          setSelectedDrink={setSelectedDrink}
+        />
+        {/* </div>
+        </div> */}
       </>
     );
   } else if (currentView === "byo") {
@@ -31,7 +31,7 @@ export function FeatureView({
   } else if (currentView === "default") {
     return (
       <div className="test">
-        <div className="test-wrapper">
+        <div className="content-wrapper">
           <DefaultPage />
         </div>
       </div>

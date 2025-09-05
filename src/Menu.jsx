@@ -44,7 +44,7 @@ export function Menu({
               setCurrentView("default");
               setMenuButton("");
             }}
-            className="cursor-pointer"
+            className="menu-h2"
           >
             Alco<span style={{ color: "gray" }}>Logic</span>
           </h2>
