@@ -9,6 +9,7 @@ export function FeatureView({
   alcohol,
   setAlcohol,
   setSelectedDrink,
+  setCurrentView,
 }) {
   if (currentView === "alcohols") {
     return (
@@ -32,7 +33,7 @@ export function FeatureView({
     return (
       <div className="test">
         <div className="content-wrapper">
-          <DefaultPage />
+          <DefaultPage setCurrentView={setCurrentView} />
         </div>
       </div>
     );

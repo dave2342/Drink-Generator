@@ -42,6 +42,7 @@ export default function App() {
             alcohol={alcohol}
             setAlcohol={setAlcohol}
             setSelectedDrink={setSelectedDrink}
+            setCurrentView={setCurrentView}
           />
           <SelectedDrink selectedDrink={selectedDrink} />
         </div>

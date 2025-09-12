@@ -66,21 +66,21 @@ export function Menu({
             </button>
 
             {isOpen && (
-              <div className="absolute right-0 top-full mt-1 bg-blue-500 rounded shadow-lg z-50 min-w-[120px] flex flex-col overflow-hidden">
+              <div className="absolute left-0 top-full mt-1 bg-[#04384b] rounded shadow-lg z-50 min-w-[120px] flex flex-col overflow-hidden">
                 <button
-                  className="block px-4 py-2 w-full text-left text-white hover:bg-blue-600"
+                  className="block px-4 py-2 w-full text-left text-white hover:bg-[#0b6a8c]"
                   onClick={() => handleSelect("creative")}
                 >
                   Creative
                 </button>
                 <button
-                  className="block px-4 py-2 w-full text-left text-white hover:bg-blue-600"
+                  className="block px-4 py-2 w-full text-left text-white hover:bg-[#0b6a8c]"
                   onClick={() => handleSelect("alcohols")}
                 >
                   By Alcohol
                 </button>
                 <button
-                  className="block px-4 py-2 w-full text-left text-white hover:bg-blue-600"
+                  className="block px-4 py-2 w-full text-left text-white hover:bg-[#0b6a8c]"
                   onClick={() => handleSelect("byo")}
                 >
                   BYO

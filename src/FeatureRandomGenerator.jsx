@@ -57,8 +57,7 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
         <div className="content-wrapper">
           <h1 className="text-2xl font-bold mb-2">Pick your base alcohol!</h1>
           <p className="text-lg text-gray-700 mb-2">
-            We'll mix up a random, but real, concoction you may have never heard
-            of!
+            We'll mix up a random concoction you may have never heard of!
           </p>
         </div>
       </div>
