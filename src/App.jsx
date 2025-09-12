@@ -27,26 +27,28 @@ export default function App() {
 
   return (
     <>
-      <div className="app-container">
-        <div className="app">
-          <Menu
-            currentView={currentView}
-            setCurrentView={setCurrentView}
-            setSelectedDrink={setSelectedDrink}
-            setAlcohol={setAlcohol}
-            setMenuButton={setMenuButton}
-            menuButton={menuButton}
-          />
-          <FeatureView
-            currentView={currentView}
-            alcohol={alcohol}
-            setAlcohol={setAlcohol}
-            setSelectedDrink={setSelectedDrink}
-            setCurrentView={setCurrentView}
-          />
-          <SelectedDrink selectedDrink={selectedDrink} />
+      <div className="msm:ax-w-md sm:mx-auto sm:p-4">
+        <div className="app-container">
+          <div className="app">
+            <Menu
+              currentView={currentView}
+              setCurrentView={setCurrentView}
+              setSelectedDrink={setSelectedDrink}
+              setAlcohol={setAlcohol}
+              setMenuButton={setMenuButton}
+              menuButton={menuButton}
+            />
+            <FeatureView
+              currentView={currentView}
+              alcohol={alcohol}
+              setAlcohol={setAlcohol}
+              setSelectedDrink={setSelectedDrink}
+              setCurrentView={setCurrentView}
+            />
+            <SelectedDrink selectedDrink={selectedDrink} />
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </>
   );
