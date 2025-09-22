@@ -27,7 +27,7 @@ export default function App() {
 
   return (
     <>
-      <div className="sm:max-w-md sm:mx-auto sm:p-4">
+      <div className="max-w-full md:max-w-none md:mx-0 p-0">
         <div className="app-container">
           <div className="app">
             <Menu
