@@ -13,15 +13,25 @@ import { useState } from "react";
 export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
   const [buttonText, setButtonText] = useState("Make Drink");
   const [customAlcohol, setCustomAlcohol] = useState("");
+  const [inputMode, setInputMode] = useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const alcoholToUse = (customAlcohol || alcohol).trim();
+    // const alcoholToUse = (customAlcohol || alcohol).trim();
 
-    if (!alcoholToUse) return;
+    // if (!alcoholToUse) return;
 
     let drinks;
+    let alcoholToUse;
+
+    if (inputMode === "text" && customAlcohol.trim() !== "") {
+      alcoholToUse = customAlcohol.trim();
+    } else if (inputMode === "dropdown" && alcohol != "") {
+      alcoholToUse = alcohol;
+    } else {
+      return;
+    }
 
     switch (alcoholToUse.toLowerCase()) {
       case "all":
@@ -69,18 +79,42 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
       <div className="test">
         <div className="alcohol-select">
           <form className="add-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search by ingredient..."
-              value={customAlcohol}
-              onChange={(e) => setCustomAlcohol(e.target.value)}
-            />
-
+            <div className="relative w-full max-w-sm">
+              <input
+                type="text"
+                placeholder="Search by ingredient..."
+                value={customAlcohol}
+                onChange={(e) => {
+                  setCustomAlcohol(e.target.value);
+                  setInputMode(e.target.value ? "text" : null);
+                  if (e.target.value) setAlcohol("");
+                }}
+              />
+              {customAlcohol && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCustomAlcohol("");
+                    setInputMode(null);
+                  }}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  x
+                </button>
+              )}
+            </div>
             <select
               className="rounded-none"
               id="alcohol"
               value={alcohol}
-              onChange={(e) => setAlcohol(e.target.value)}
+              onChange={(e) => {
+                setAlcohol(e.target.value);
+                setInputMode("dropdown");
+                setCustomAlcohol("");
+              }}
+              // onChange={(e) => setAlcohol(e.target.value)
+
+              // }
             >
               <option value="" hidden>
                 Select
