@@ -6,20 +6,24 @@ import {
   fetchVodkaDrinks,
   fetchWhiskeyDrinks,
   fetchDrinkDetailsById,
+  fetchDrinksByIngredient,
 } from "./api/alcoholDrinks";
 import { useState } from "react";
 
 export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
   const [buttonText, setButtonText] = useState("Make Drink");
+  const [customAlcohol, setCustomAlcohol] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!alcohol) return;
+    const alcoholToUse = (customAlcohol || alcohol).trim();
+
+    if (!alcoholToUse) return;
 
     let drinks;
 
-    switch (alcohol) {
+    switch (alcoholToUse.toLowerCase()) {
       case "all":
         drinks = await fetchAllDrinks();
         break;
@@ -39,8 +43,9 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
         drinks = await fetchWhiskeyDrinks();
         break;
       default:
-        console.warn(`Unhandled Alcohol type: ${alcohol}`);
-        drinks = [];
+        drinks = await fetchDrinksByIngredient(alcoholToUse);
+      // console.warn(`Unhandled Alcohol type: ${alcohol}`);
+      // drinks = [];
     }
 
     if (drinks.length > 0) {
@@ -64,9 +69,17 @@ export function RandomGenerator({ alcohol, setAlcohol, setSelectedDrink }) {
       <div className="test">
         <div className="alcohol-select">
           <form className="add-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search by ingredient..."
+              value={customAlcohol}
+              onChange={(e) => setCustomAlcohol(e.target.value)}
+            />
+
             <select
               className="rounded-none"
               id="alcohol"
+              value={alcohol}
               onChange={(e) => setAlcohol(e.target.value)}
             >
               <option value="" hidden>

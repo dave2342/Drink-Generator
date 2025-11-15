@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AlcoholsList } from "./AlcoholsList";
 import { MixersList } from "./MixersList";
 import { GarnishList } from "./GarnishList";
-import { ChevronDown, ChevronRight } from "lucide-react";
 
 export function BuildYourOwn() {
   const [open, setOpen] = useState(null);
@@ -22,11 +21,7 @@ export function BuildYourOwn() {
             onClick={() => setOpen(open === key ? null : key)}
           >
             {label}
-            {open === key ? (
-              <ChevronDown className="h-4 w-4" />
-            ) : (
-              <ChevronRight className="h-4 w-4" />
-            )}
+            <span>{open === key ? "▼" : "▶"}</span>
           </button>
 
           {open === key && Component && (

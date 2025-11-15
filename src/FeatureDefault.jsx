@@ -3,10 +3,20 @@ export function DefaultPage({ setCurrentView }) {
     <div>
       <h1 className="text-2xl font-bold mb-4">Welcome to AlcoLogic!</h1>
       <p className="text-lg text-gray-700 mb-6">
-        Discover random cocktails, build and save your own creations, and
-        explore unique drink ideas with our AI-powered mixologist!
+        Have you ever been at a bar or restaurant and had NO idea what cocktail
+        you wanted?
       </p>
-      <p>
+      <p className="text-lg text-gray-700 mb-6">
+        Or maybe you just want to try a fresh, new drink you've never had
+        before?
+      </p>
+
+      <p className="text-lg text-gray-700 mb-6">
+        Meet AlcoLogic: Discover random cocktails, build and save your own
+        creations, and explore unique drink ideas with our AI-powered
+        mixologist!
+      </p>
+      <p className="text-lg text-gray-700 mb-6">
         Get started by picking an alcohol{" "}
         <span
           onClick={() => setCurrentView("alcohols")}

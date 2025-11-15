@@ -63,3 +63,7 @@ export const fetchAllDrinks = () =>
     "Tequila",
     "Vodka",
   ]);
+
+export const fetchDrinksByIngredient = (ingredient) => {
+  return fetchDrinksByAlcohol(ingredient);
+};
