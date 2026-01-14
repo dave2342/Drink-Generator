@@ -13,16 +13,11 @@ export function CreativeCocktails() {
 
     try {
       // Call your backend API
-      const response = await fetch(
-        "http://localhost:5000/api/generate-ai-drink",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt }), // send user input to backend
-        }
-      );
+      const response = await fetch("/api/generate-ai-drink", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
 
       if (!response.ok) {
         throw new Error("Backend error");
