@@ -31,6 +31,7 @@ RULES:
 - Do NOT include explanations
 - Do NOT wrap the response in backticks
 - Do NOT include emojis
+- Almost ALWAYS make a sexual name for the drink
 
 The JSON MUST follow this exact shape:
 
