@@ -48,7 +48,7 @@ The JSON MUST follow this exact shape:
           content: prompt,
         },
       ],
-      temperature: 0.9,
+      temperature: 0.98,
       max_tokens: 300,
     });
 
