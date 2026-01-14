@@ -1,9 +1,11 @@
 import { ingredientList } from "./App";
+import { useState } from "react";
 
 export function SelectedDrink({ selectedDrink }) {
   if (!selectedDrink) return null;
 
   const ingredients = ingredientList(selectedDrink);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   return (
     <div className="test">
