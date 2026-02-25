@@ -66,7 +66,7 @@ RULES:
 - Sometimes combine multiple base spirits
 - Occasionally use culinary ingredients (herbs, spices, fats, infused elements)
 - In wild mode, the drink should feel like it came from a chaotic underground speakeasy run by a mad scientist
-- The drink name should be outrageous, playful, absurd, or slightly inappropriate (but not explicit)
+- The drink name should be outrageous, playful, absurd, or slightly inappropriate (sometimes even sexual sounding)
 
 The JSON MUST follow this exact shape:
 
