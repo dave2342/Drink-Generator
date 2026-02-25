@@ -17,8 +17,32 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Prompt is required" });
     }
 
-    // Dynamic creativity settings
-    const temperature = wildMode ? 1.05 : 0.75;
+    // 🎲 Random chaos ingredient pool
+    const wildCards = [
+      "smoked rosemary",
+      "black pepper syrup",
+      "jalapeño jam",
+      "espresso foam",
+      "balsamic reduction",
+      "toasted sesame syrup",
+      "mango chili puree",
+      "coconut cream",
+      "absinthe rinse",
+      "salted honey",
+      "charred pineapple",
+      "lavender bitters",
+      "maple bacon fat wash",
+    ];
+
+    const randomWild = wildCards[Math.floor(Math.random() * wildCards.length)];
+
+    // 🧠 Inject structural chaos into the user prompt
+    const finalPrompt = wildMode
+      ? `${prompt}. The drink must creatively incorporate ${randomWild}.`
+      : prompt;
+
+    // 🎛 Creativity tuning
+    const temperature = wildMode ? 1.1 : 0.75;
     const top_p = wildMode ? 1.0 : 0.9;
 
     const completion = await openai.chat.completions.create({
@@ -27,16 +51,22 @@ export default async function handler(req, res) {
         {
           role: "system",
           content: `
-You are a cocktail-generating API.
+You are an experimental, chaotic mixologist AI.
+
+Your job is to invent bold, ridiculous, over-the-top cocktail names and surprising ingredient combinations.
 
 RULES:
 - Respond with ONLY valid JSON
-- Do NOT include markdown
-- Do NOT include explanations
-- Do NOT wrap the response in backticks
-- Do NOT include emojis
-- Be creative and avoid repeating common cocktail names
-${wildMode ? "- Push flavor boundaries and surprise the user." : ""}
+- No markdown
+- No explanations
+- No emojis
+- Avoid boring classic formulas like just spirit + citrus + sweetener
+- Be wildly creative
+- Invent unexpected ingredient pairings
+- Sometimes combine multiple base spirits
+- Occasionally use culinary ingredients (herbs, spices, fats, infused elements)
+- In wild mode, the drink should feel like it came from a chaotic underground speakeasy run by a mad scientist
+- The drink name should be outrageous, playful, absurd, or slightly inappropriate (but not explicit)
 
 The JSON MUST follow this exact shape:
 
@@ -44,18 +74,18 @@ The JSON MUST follow this exact shape:
   "name": "Cocktail Name",
   "ingredients": ["ingredient with measurement"],
   "instructions": "Step-by-step instructions as a string",
-  "taste_profile": ["sweet", "fruity", "bitter"]
+  "taste_profile": ["sweet", "spicy", "savory", "smoky"]
 }
           `,
         },
         {
           role: "user",
-          content: prompt,
+          content: finalPrompt,
         },
       ],
       temperature,
       top_p,
-      max_tokens: 300,
+      max_tokens: 350,
     });
 
     let aiText = completion.choices[0].message.content;
@@ -67,10 +97,10 @@ The JSON MUST follow this exact shape:
     } catch (err) {
       console.error("Failed to parse AI output:", aiText);
       drink = {
-        name: "Mystery Cocktail",
-        ingredients: ["1 oz alcohol", "1 oz mixer"],
+        name: "Unhinged Mystery",
+        ingredients: ["1 oz mystery spirit", "1 oz something questionable"],
         instructions: aiText,
-        taste_profile: ["creative"],
+        taste_profile: ["chaotic"],
       };
     }
 
