@@ -16,7 +16,6 @@ export default async function handler(req, res) {
     if (!prompt) {
       return res.status(400).json({ error: "Prompt is required" });
     }
-    console.log("Wild mode received:", wildMode);
     // 🎲 Random chaos ingredient pool
     const wildCards = [
       "smoked rosemary",
