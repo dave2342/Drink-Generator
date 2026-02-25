@@ -4,6 +4,7 @@ export function CreativeCocktails() {
   const [prompt, setPrompt] = useState("");
   const [drink, setDrink] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [wildMode, setWildMode] = useState(false);
 
   async function generateDrink() {
     if (!prompt.trim()) return;
@@ -16,7 +17,7 @@ export function CreativeCocktails() {
       const response = await fetch("/api/generate-ai-drink", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ prompt, wildMode: Boolean(wildMode) }),
       });
 
       if (!response.ok) {
@@ -45,6 +46,16 @@ export function CreativeCocktails() {
 
       <br />
 
+      {/* <button onClick={generateDrink} disabled={loading}>
+        {loading ? "Mixing..." : "Generate Drink"}
+      </button> */}
+
+      <button
+        onClick={() => setWildMode(!wildMode)}
+        className={wildMode ? "wild-toggle active" : "wild-toggle"}
+      >
+        {wildMode ? "🔥 Wild Mode ON" : "Wild Mode OFF"}
+      </button>
       <button onClick={generateDrink} disabled={loading}>
         {loading ? "Mixing..." : "Generate Drink"}
       </button>
@@ -52,8 +63,12 @@ export function CreativeCocktails() {
       {loading && <p>🍹 Shaking the cocktail...</p>}
 
       {drink && (
-        <div>
-          <h3>{drink.name}</h3>
+        <div className={wildMode ? "drink-card wild" : "drink-card"}>
+          {wildMode && (
+            <div className="wild-badge">🔥 WILD MODE ACTIVATED 🔥</div>
+          )}
+
+          <h3 className="drink-name">{drink.name}</h3>
 
           <strong>Ingredients:</strong>
           <ul>
@@ -66,7 +81,7 @@ export function CreativeCocktails() {
           <p>{drink.instructions}</p>
 
           <strong>Taste Profile:</strong>
-          <p>{drink.taste_profile.join(", ")}</p>
+          <p>{drink.taste_profile.join(" • ")}</p>
         </div>
       )}
     </div>
