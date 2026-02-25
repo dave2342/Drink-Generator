@@ -11,11 +11,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { prompt } = req.body;
+    const { prompt, wildMode } = req.body;
 
     if (!prompt) {
       return res.status(400).json({ error: "Prompt is required" });
     }
+
+    // Dynamic creativity settings
+    const temperature = wildMode ? 1.05 : 0.75;
+    const top_p = wildMode ? 1.0 : 0.9;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -31,7 +35,8 @@ RULES:
 - Do NOT include explanations
 - Do NOT wrap the response in backticks
 - Do NOT include emojis
-- Almost ALWAYS make a sexual name for the drink
+- Be creative and avoid repeating common cocktail names
+${wildMode ? "- Push flavor boundaries and surprise the user." : ""}
 
 The JSON MUST follow this exact shape:
 
@@ -48,7 +53,8 @@ The JSON MUST follow this exact shape:
           content: prompt,
         },
       ],
-      temperature: 0.98,
+      temperature,
+      top_p,
       max_tokens: 300,
     });
 
